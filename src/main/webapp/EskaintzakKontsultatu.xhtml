@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core">
+<f:view>
+	<h:head>
+		<title>Eskaintzak Kontsultatu</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h3>Eskaintzak bilatu</h3>
+
+			<p>
+				<h:inputText id="bilaketa"
+					value="#{eskaintzakKontsultatu.bilaketaTestua}" />
+				&#160;
+				<h:commandButton value="Bilatu"
+					action="#{eskaintzakKontsultatu.bilatu}" />
+			</p>
+
+			<h:dataTable value="#{eskaintzakKontsultatu.eskaintzak}" var="item"
+				border="1" rendered="#{not empty eskaintzakKontsultatu.eskaintzak}">
+				<h:column>
+					<f:facet name="header">Tituloa</f:facet>
+					<h:commandLink value="#{item.title}"
+						action="#{eskaintzakKontsultatu.ikusi(item)}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Prezioa</f:facet>
+                    #{item.price} €
+                </h:column>
+				<h:column>
+					<f:facet name="header">Argitarapen eguna</f:facet>
+					<h:outputText value="#{item.publicationDate}">
+						<f:convertDateTime pattern="yyyy/MM/dd" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Ekintza</f:facet>
+					<h:commandButton value="Ikusi"
+						action="#{eskaintzakKontsultatu.ikusi(item)}" />
+				</h:column>
+			</h:dataTable>
+
+			<p>
+				<h:commandButton value="Itxi" action="atzera" immediate="true" />
+			</p>
+
+			<h:messages style="color:red" />
+		</h:form>
+	</h:body>
+</f:view>
+</html>

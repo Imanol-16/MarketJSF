@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core" xmlns:p="http://primefaces.org/ui">
+<f:view>
+	<h:head>
+		<title>Sortu Eskaintza</title>
+	</h:head>
+	<h:body>
+		<h:form enctype="multipart/form-data">
+			<h3>Sortu Eskaintza</h3>
+
+			<table>
+				<tr>
+					<td style="vertical-align: top; padding-right: 30px;">
+						<table>
+							<tr>
+								<td>Tituloa</td>
+								<td><h:inputText id="tituloa"
+										value="#{eskaintzaSortu.tituloa}" style="width: 250px;" /></td>
+							</tr>
+							<tr>
+								<td style="vertical-align: top;">Deskripzioa</td>
+								<td><h:inputTextarea id="deskripzioa"
+										value="#{eskaintzaSortu.deskripzioa}" rows="5" cols="32" /></td>
+							</tr>
+							<tr>
+								<td>Prezioa</td>
+								<td><h:inputText id="prezioa"
+										value="#{eskaintzaSortu.prezioa}" style="width: 70px;" />
+									&#160; <h:inputFile id="argazkia"
+										value="#{eskaintzaSortu.argazkia}" /> <h:message
+										for="prezioa" style="color:red" /></td>
+							</tr>
+							<tr>
+								<td>Egoera</td>
+								<td><h:selectOneMenu id="egoera"
+										value="#{eskaintzaSortu.egoera}">
+										<f:selectItem itemValue="0" itemLabel="Berria" />
+										<f:selectItem itemValue="1" itemLabel="Oso ona" />
+										<f:selectItem itemValue="2" itemLabel="Ona" />
+										<f:selectItem itemValue="3" itemLabel="Nahikoa" />
+										<f:selectItem itemValue="4" itemLabel="Hondatuta" />
+									</h:selectOneMenu></td>
+							</tr>
+						</table>
+					</td>
+
+					<td style="vertical-align: top;">
+						<div>
+							<b>Argitarapen eguna</b>
+						</div> <p:datePicker id="data"
+							value="#{eskaintzaSortu.argitarapenEguna}" inline="true" /> <h:message
+							for="data" style="color:red" />
+					</td>
+				</tr>
+			</table>
+
+			<p>
+				<h:commandButton value="Sortu Eskaintza"
+					action="#{eskaintzaSortu.sortu}" />
+				&#160;
+				<h:commandButton value="Itxi" action="atzera" immediate="true" />
+			</p>
+
+			<h:messages style="color:red" />
+		</h:form>
+	</h:body>
+</f:view>
+</html>

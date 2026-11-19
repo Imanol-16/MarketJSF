@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core">
+<f:view>
+	<h:head>
+		<title>Eskaintzaren xehetasunak</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h3>Eskaintzaren xehetasunak</h3>
+
+			<h:panelGroup
+				rendered="#{not empty eskaintzakKontsultatu.aukeratutakoEskaintza}">
+				<table border="1" cellpadding="6" style="border-collapse: collapse;">
+					<tr>
+						<td><b>Kodea</b></td>
+						<td>#{eskaintzakKontsultatu.aukeratutakoEskaintza.saleNumber}</td>
+					</tr>
+					<tr>
+						<td><b>Tituloa</b></td>
+						<td>#{eskaintzakKontsultatu.aukeratutakoEskaintza.title}</td>
+					</tr>
+					<tr>
+						<td><b>Deskripzioa</b></td>
+						<td>#{eskaintzakKontsultatu.aukeratutakoEskaintza.description}</td>
+					</tr>
+					<tr>
+						<td><b>Prezioa</b></td>
+						<td>#{eskaintzakKontsultatu.aukeratutakoEskaintza.price} €</td>
+					</tr>
+					<tr>
+						<td><b>Egoera</b></td>
+						<td>#{eskaintzakKontsultatu.egoeraTestua}</td>
+					</tr>
+					<tr>
+						<td><b>Argitarapen eguna</b></td>
+						<td><h:outputText
+								value="#{eskaintzakKontsultatu.aukeratutakoEskaintza.publicationDate}">
+								<f:convertDateTime pattern="yyyy/MM/dd" />
+							</h:outputText></td>
+					</tr>
+					<tr>
+						<td><b>Saltzailea</b></td>
+						<td>#{eskaintzakKontsultatu.aukeratutakoEskaintza.seller}</td>
+					</tr>
+				</table>
+			</h:panelGroup>
+
+			<p>
+				<h:commandButton value="Itxi" action="atzera" immediate="true" />
+			</p>
+		</h:form>
+	</h:body>
+</f:view>
+</html>
